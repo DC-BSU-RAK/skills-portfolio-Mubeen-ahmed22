@@ -11,15 +11,15 @@ class QuizApp:
         self.master = master
         master.title("✨ MATH MASTER: The Ultimate Quiz")
         
-        # --- FULL-SCREEN IMPLEMENTATION ---
+        #FULL SCREEN IMPLEMENTATION
         master.attributes('-fullscreen', True) 
         master.bind('<Escape>', self.end_fullscreen)
         
-        # --- PATH FIX: Define the script's local directory ---
+        #PATH FIX: Define the script's local directory
         # This gets the absolute path to the folder where quiz1.py resides.
         self.script_dir = os.path.dirname(os.path.abspath(__file__))
         
-        # --- COLOR PALETTE ---
+        #OLOR PALETete
         self.BG_DARK = "#000000"     
         self.BG_LIGHT = "#FFFFFF"    
         self.ACCENT_YELLOW = "#CCAA00" 
@@ -29,7 +29,7 @@ class QuizApp:
         
         master.configure(bg=self.BG_DARK)
         
-        # --- Audio Setup ---
+        #Audio Setup
         self.setup_audio() 
         
         # Set Image Background (Filename only is passed)
@@ -49,7 +49,7 @@ class QuizApp:
         self.current_frame = None
         self.display_menu()
 
-    # --- AUDIO CONTROL METHODS ---
+    # AUDIO CONTROL METHODS 
     def setup_audio(self):
         """Initializes the pygame mixer."""
         try:
@@ -70,7 +70,7 @@ class QuizApp:
         except pygame.error as e:
             print(f"Could not play music: {e}. Check if file '{music_file}' exists at {full_path}.")
             
-    # --- FULL SCREEN EXIT ---
+    # FULL SCREEN EXIT
     def end_fullscreen(self, event=None):
         """Allows the user to exit fullscreen mode by pressing the Escape key."""
         self.master.attributes('-fullscreen', False)
@@ -81,7 +81,7 @@ class QuizApp:
         if pygame.mixer.get_init():
              pygame.mixer.music.stop()
 
-    # --- Image Handling ---
+    #Image Handling
     def set_image_background(self, image_path):
         """Loads and displays the image as a background on a canvas."""
         try:
@@ -132,7 +132,7 @@ class QuizApp:
         answer = num1 + num2 if op == '+' else num1 - num2
         self.current_problem = {'num1': num1, 'num2': num2, 'op': op, 'answer': answer}
 
-    # --- GUI Management Functions ---
+    # GUI Management Functions
     def switch_frame(self, new_frame_func):
         if self.current_frame:
             self.current_frame.destroy()
@@ -150,7 +150,7 @@ class QuizApp:
             self.master.unbind('<Return>') 
             self.switch_frame(self.display_menu)
 
-    # --- Display Functions --- 
+    # Display Functions 
 
     def display_menu(self):
         self.reset_game()
