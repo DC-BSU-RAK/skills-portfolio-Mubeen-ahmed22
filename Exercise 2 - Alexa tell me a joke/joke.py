@@ -39,7 +39,7 @@ class ModernJokeTeller:
         
         # File paths for background image and music file
         self.bg_image_path = "background.png"
-        self.music_path = "music.mp3"
+        self.music_path = "backgroundaudio.mp3"
         
         # Load jokes from file or use fallback list
         self.jokes = self.load_jokes()
