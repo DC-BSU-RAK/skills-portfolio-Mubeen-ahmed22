@@ -1481,7 +1481,7 @@ class ModernStudentManagerApp:
             export_filename = f"student_export_{timestamp}.txt"
             export_path = self.manager.script_dir / export_filename
             
-            with open(export_path, 'w') as file:
+            with open(export_path, 'w', encoding='utf-8') as file:
                 file.write("🎓 Harvard University - Student Data Export\n")
                 file.write("════════════════════════════════════════════════════════════════\n")
                 file.write(f"Exported on: {datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S')}\n")
