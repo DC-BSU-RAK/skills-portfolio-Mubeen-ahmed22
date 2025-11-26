@@ -1,5 +1,4 @@
 import tkinter as tk
-# Removed 'from tkinter import messagebox' as we are building custom ones now
 import random
 from PIL import Image, ImageTk
 import pygame
@@ -125,7 +124,7 @@ class QuizApp:
         answer = num1 + num2 if op == '+' else num1 - num2
         self.current_problem = {'num1': num1, 'num2': num2, 'op': op, 'answer': answer}
 
-    # --- HELPER: CREATE CUSTOM POPUP (NO FEATHER) ---
+    # --- HELPER: CREATE CUSTOM POPUP ---
     def create_custom_popup(self, title, width=300, height=150):
         popup = tk.Toplevel(self.master)
         popup.title(title)
