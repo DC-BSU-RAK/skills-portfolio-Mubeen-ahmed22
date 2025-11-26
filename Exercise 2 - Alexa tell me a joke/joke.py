@@ -8,12 +8,10 @@ import os
 class ModernJokeTeller:
     def __init__(self, root):
         self.root = root
-        self.root.title("Alexa Joke Teller")
+        self.root.title("😂 Joke Teller")  
         self.root.geometry("1000x700")
         
         # Initialize pygame sound system for background music
-        # (This part is a bit advanced because pygame handles audio separately.
-        # I took help from Chatgpt to understand how to initialize the mixer correctly.)
         pygame.mixer.init()
         self.background_music = None
         
@@ -52,9 +50,7 @@ class ModernJokeTeller:
         self.start_background_music()
         
     def load_jokes(self):
-        # Loads jokes from a text file if it exists, otherwise uses default jokes.
-        # This part is slightly advanced because of Path() and folder navigation,
-        #took help from chatgpt to make it work properly.
+        
         try:
             current_dir = Path(__file__).parent
             resources_dir = current_dir.parent / "resources"
@@ -83,7 +79,6 @@ class ModernJokeTeller:
     def start_background_music(self):
         """Play background music in a loop with lower volume."""
         try:
-            # Loading and looping background music
             pygame.mixer.music.load(self.music_path)
             pygame.mixer.music.set_volume(0.3)
             pygame.mixer.music.play(-1)
@@ -121,10 +116,10 @@ class ModernJokeTeller:
         header_frame = tk.Frame(header_stroke, bg=self.colors['bg'], highlightthickness=0)
         header_frame.pack(fill='both', expand=True, padx=2, pady=2)
         
-        # Main title
+        
         title_label = tk.Label(
             header_frame, 
-            text="🎤 Joking Alexa",
+            text="😂 Joke Teller",
             font=self.title_font,
             fg=self.colors['text_black'],
             bg=self.colors['bg']
@@ -141,13 +136,13 @@ class ModernJokeTeller:
         )
         subtitle_label.pack(pady=5)
         
-        # Emoji icon
+        
         alexa_frame = tk.Frame(main_frame, bg=self.colors['bg'])
         alexa_frame.pack(pady=15)
         
         alexa_icon = tk.Label(
             alexa_frame,
-            text="😂",
+            text="😄",
             font=('Arial', 48),
             fg=self.colors['text_black'],
             bg=self.colors['bg']
@@ -171,7 +166,7 @@ class ModernJokeTeller:
         # Setup text (initially showing intro text)
         self.setup_label = tk.Label(
             joke_content,
-            text="Ready to brighten your day? Click Tell Joke to begin! ✨",
+            text="Ready to brighten your day? Click Tell Joke to begin! 😊",
             font=self.joke_font,
             fg=self.colors['text_black'],
             bg=self.colors['card_bg'],
@@ -198,13 +193,13 @@ class ModernJokeTeller:
         button_container = tk.Frame(button_stroke, bg=self.colors['bg'], highlightthickness=0)
         button_container.pack(fill='both', expand=True, padx=2, pady=2)
         
-        # Buttons
+        # Buttons 
         self.tell_btn = self.create_modern_button(button_container, "🎤 Tell Joke", self.tell_joke, 0, 0)
         self.punchline_btn = self.create_modern_button(button_container, "😂 Punchline", self.show_punchline, 0, 1)
         self.next_btn = self.create_modern_button(button_container, "🔄 Next", self.next_joke, 0, 2)
-        self.quit_btn = self.create_modern_button(button_container, "🚪 Quit", self.quit_app, 0, 3)
+        self.quit_btn = self.create_modern_button(button_container, "❌ Quit", self.quit_app, 0, 3)
         
-        # Disable punchline/next buttons until a joke is shown
+       
         self.punchline_btn.config(state='disabled')
         self.next_btn.config(state='disabled')
         
@@ -227,8 +222,6 @@ class ModernJokeTeller:
     
     def load_background_image(self):
         """Load the background image onto the canvas."""
-        # This part is a bit tricky because Tkinter PhotoImage only supports PNG.
-        # I took help from Chatgpt to understand how to place the image correctly.
         try:
             self.bg_image = tk.PhotoImage(file=self.bg_image_path)
             self.bg_canvas.create_image(0, 0, image=self.bg_image, anchor='nw')
@@ -270,9 +263,9 @@ class ModernJokeTeller:
         return btn
     
     def tell_joke(self):
-        # Pick a random joke and show only the setup part
+        
         if not self.jokes:
-            messagebox.showerror("Error", "No jokes available!")
+            messagebox.showerror("😂 Error", "No jokes available!")  
             return
         
         joke_text = random.choice(self.jokes)
@@ -311,8 +304,8 @@ class ModernJokeTeller:
         self.status_label.config(text="Hope that made you smile! 😄")
     
     def next_joke(self):
-        # Reset the interface and prepare for another joke
-        self.setup_label.config(text="Getting another joke ready... ✨")
+        
+        self.setup_label.config(text="Getting another joke ready... 😊")
         self.punchline_label.place_forget()
         
         self.tell_btn.config(state='normal')
@@ -322,8 +315,8 @@ class ModernJokeTeller:
         self.status_label.config(text="Ready for more laughter! 🌟")
     
     def quit_app(self):
-        # Confirm before exiting the program
-        if messagebox.askokcancel("Quit", "Are you sure you want to quit?"):
+        # Confirm before exiting the program 
+        if messagebox.askokcancel("😂 Quit", "Are you sure you want to quit?"):
             self.stop_background_music()
             self.root.quit()
 
